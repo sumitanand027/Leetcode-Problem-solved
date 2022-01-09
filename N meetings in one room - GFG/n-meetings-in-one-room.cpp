@@ -7,7 +7,7 @@ class Solution
 {
     public:
     
-    bool static cmp ( pair<int,int>  a, pair<int,int>  b ) {
+    bool static cmp ( pair<int,int>  &a, pair<int,int>  &b ) {
         if( a.second < b.second ) return 1;
         else if ( a.second > b.second ) return 0;
         else if( a.first < b.first ) return 1;
