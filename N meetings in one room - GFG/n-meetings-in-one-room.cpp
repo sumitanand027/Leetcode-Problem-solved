@@ -7,6 +7,13 @@ class Solution
 {
     public:
     
+    bool static cmp ( pair<int,int>  a, pair<int,int>  b ) {
+        if( a.second < b.second ) return 1;
+        else if ( a.second > b.second ) return 0;
+        else if( a.first < b.first ) return 1;
+        else return 0;
+    }
+    
     int maxMeetings(int start[], int end[], int n)
     {
         // Your code here
@@ -15,23 +22,18 @@ class Solution
             v.push_back( { start[i] , end[i] } );
         }
         
-        sort( v.begin() , v.end() );
+        sort( v.begin() , v.end() , cmp );
         
-        int ans = 0 , s = -1 , e = -1;
-        
-        for( int i = 0 ; i < n ; i++ ) {
+        int ans = 0, s = -1, e = -1;
+        for( int i = 0; i < n; i++ ) {
             if( v[i].first > e ) {
+                s = v[i].first;
+                e = v[i].second;
                 ans++;
-                s = v[i].first;
-                e = v[i].second;
-            } else if( v[i].first == s ) {
-                if( v[i].second < e )
-                    e = v[i].second;
-            } else if( v[i].second < e ) {
-                s = v[i].first;
-                e = v[i].second;
             }
+            
         }
+        
         return ans;
     }
 };
