@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    void subset( vector<int> &nums, int j, vector<int> sub, vector< vector<int> > &subs ) {
+    void subset( vector<int> &nums, int j, vector<int> &sub, vector< vector<int> > &subs ) {
         if( j == nums.size() ) {
             subs.push_back( sub );
             return;
@@ -10,6 +10,7 @@ public:
         subset( nums, j + 1, sub, subs );
         sub.push_back( nums[j] );
         subset( nums, j + 1, sub, subs );
+        sub.pop_back();
         
     }
     
@@ -19,5 +20,4 @@ public:
         subset( nums, 0 , sub, subs );
         return subs;
     }
-    
 };
