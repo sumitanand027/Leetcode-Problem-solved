@@ -1,13 +1,16 @@
 class Solution {
 public:
     
-    void subset( vector<int> &nums, int j, vector<int> &sub, vector< vector<int> > &subs ) {
-        subs.push_back( sub );
-        for( int i = j; i < nums.size(); i++ ) {
-            sub.push_back( nums[i] );
-            subset( nums , i + 1 , sub , subs );
-            sub.pop_back();
+    void subset( vector<int> &nums, int j, vector<int> sub, vector< vector<int> > &subs ) {
+        if( j == nums.size() ) {
+            subs.push_back( sub );
+            return;
         }
+        
+        subset( nums, j + 1, sub, subs );
+        sub.push_back( nums[j] );
+        subset( nums, j + 1, sub, subs );
+        
     }
     
     vector<vector<int>> subsets(vector<int>& nums) {
