@@ -10,7 +10,7 @@ public:
         
         for( int row = 0; row < n; row++ )
         {
-            if( leftRow[row] == 0 && leftDownD[row+col] == 0 && leftUpD[n-1+col-row ] == 0 ) {
+            if( leftRow[row] == 0 && leftDownD[row+col] == 0 && leftUpD[n-1+col-row] == 0 ) {
                 board[row][col] = 'Q';
                 leftRow[row] = 1;
                 leftDownD[row+col] = 1;
