@@ -40,10 +40,10 @@ public:
             TreeNode * cur = q.front();
             q.pop();
             
-            if( cur -> left ) 
+            if( cur && cur -> left ) 
                 q.push( cur -> left );
             
-            if( cur -> right )
+            if( cur && cur -> right )
                 q.push( cur -> right );
             
             if( q.front() == NULL ) {
