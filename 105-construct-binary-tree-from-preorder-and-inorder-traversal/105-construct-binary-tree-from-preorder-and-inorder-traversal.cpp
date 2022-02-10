@@ -12,15 +12,15 @@
 class Solution {
 public:
     
-    TreeNode * buildTree( vector<int> &p, int preS , int preE , vector<int> &i , int inS , int inE , map<int,int> &mp  ) {
+    TreeNode * buildTree( vector<int> &p, int preS , int preE  , int inS , int inE , map<int,int> &mp  ) {
         if( preS > preE || inS > inE ) return NULL;
         
         TreeNode * root = new TreeNode( p[preS] );
         int ele = mp[ root -> val ];
         int nEle = ele - inS;
         
-        root -> left = buildTree( p , preS + 1 , preS + nEle , i , inS , ele - 1 , mp  );
-        root -> right = buildTree( p , preS + nEle + 1 , preE , i , ele + 1 , inE , mp );
+        root -> left = buildTree( p , preS + 1 , preS + nEle  , inS , ele - 1 , mp  );
+        root -> right = buildTree( p , preS + nEle + 1 , preE  , ele + 1 , inE , mp );
         
         return root;
     }
@@ -34,7 +34,7 @@ public:
             mp[ inorder[i] ] = i;
         }
         
-        return buildTree( preorder, preS, preE, inorder, inS, inE, mp );
+        return buildTree( preorder, preS, preE, inS, inE, mp );
     }
     
 };
