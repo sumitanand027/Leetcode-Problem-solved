@@ -14,32 +14,13 @@ public:
     
     int helper( TreeNode * root, int &ans )
     {
-        if( !root ) return INT_MIN;
+        if( !root ) return 0;
         
-        int l = helper( root -> left, ans );
-        int r = helper( root -> right, ans );
+        int l = max( helper( root -> left, ans ) , 0 );
+        int r = max( helper( root -> right, ans ) , 0 );
         
-        // ans = max( ans, l );
-        // ans = max( ans, r );
-        
-        int resAns = root -> val;
-        
-        if ( l != INT_MIN && r != INT_MIN ) {
-            ans = max( { ans , root -> val , root -> val + l , root -> val + r  });
-            if( ans < resAns + l + r ) {
-                ans = resAns + l + r;
-                return max( l , r ) + resAns;
-            }
-            return max( { root -> val , root -> val + l , root -> val + r } );
-        } 
-        else if ( l != INT_MIN )
-            resAns = max( resAns, root -> val + l );
-        else if ( r != INT_MIN )
-            resAns = max( resAns, root -> val + r );
-      
-        ans = max( ans, resAns );
-        
-        return resAns;   
+        ans = max( ans, root -> val + l + r );
+        return root -> val + max( l , r );
         
     }
     
