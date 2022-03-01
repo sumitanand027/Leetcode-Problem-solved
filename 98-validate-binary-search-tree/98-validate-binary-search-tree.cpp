@@ -12,6 +12,7 @@
 class Solution {
 public:
     
+    // instead of using long long int we can use node *
     bool isValidBST( TreeNode * root , long long int HRange , long long int LRange ) {
         if( root == NULL ) return true;
         
