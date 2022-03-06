@@ -34,6 +34,7 @@ public:
     }
     
     int deepestLeavesSum(TreeNode* root) {
+        // we can solve in single traversal by level order traversal
         int d = depth( root );
         
         int ans = 0;
