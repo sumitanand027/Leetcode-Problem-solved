@@ -12,22 +12,31 @@
 class Solution {
 public:
     
-    vector<TreeNode*> ans;
-    void inorder(TreeNode *root) {
-        if(!root) return;
-        inorder(root->left);
-        ans.push_back(root);
-        inorder(root->right);      
+    void inorder ( TreeNode * cur , vector<TreeNode *> &ind )  {
+        if( !cur ) return;
+        
+        inorder ( cur -> left , ind );
+        ind.push_back ( cur  );
+        inorder ( cur -> right , ind );       
     }
-    TreeNode* solve(int l,int h) {
-        if(l>h) return NULL;
-        int m=(l+h)/2;
-        ans[m]->left=solve(l,m-1);
-        ans[m]->right=solve(m+1,h);
-        return ans[m];
+    
+    TreeNode *  helper( vector <TreeNode *> &ind , int i , int j )
+    {
+        if( i > j ) return NULL;
+        
+        int mid = ( i + j ) / 2;
+        
+        ind[ mid ] -> left = helper( ind , i , mid - 1 );
+        ind[ mid ] -> right = helper( ind , mid + 1 , j );
+        
+        return ind[mid];
     }
+    
+    
     TreeNode* balanceBST(TreeNode* root) {
-        inorder(root);
-        return solve(0,ans.size()-1);
-    } 
+        vector<TreeNode *> ind;
+        inorder( root , ind );
+        
+        return helper( ind , 0 , ind.size() - 1 );
+    }
 };
