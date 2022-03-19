@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    void insertVal( TreeNode * root , int val ){
+    void insertVal( TreeNode * root , int &val ){
         if( root == NULL ) return;
         
         if( root -> val > val ) 
