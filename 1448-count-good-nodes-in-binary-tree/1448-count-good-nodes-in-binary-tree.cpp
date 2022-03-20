@@ -12,23 +12,26 @@
 class Solution {
 public:
     
-    void helper( TreeNode * root , int &ans , priority_queue<int> p )
+    void helper( TreeNode * root , int &ans , multiset< int , greater<int> > &p )
     {
         if( root == NULL ) return;
         
-        if( !p.empty() && p.top() <= root -> val ) {
+        if( !p.empty() && *p.begin() <= root -> val ) {
             ans++;
         }
         if( p.empty() ) ans++;
         
-        p.push( root -> val );
+        p.insert( root -> val );
         
         helper( root -> left , ans , p );
         helper( root -> right , ans , p );
+        
+        auto it = p.find( root -> val );
+        p.erase( it );
     }
     
     int goodNodes(TreeNode* root) {
-        priority_queue< int > p;
+        multiset< int , greater<int> > p;
         
         int ans = 0;
         
