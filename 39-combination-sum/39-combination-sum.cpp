@@ -8,9 +8,11 @@ public:
         }
         if( i == cad.size() ) return;
         
-        helper( cad, i+1, arr, ans, t );
+        
         arr.push_back( cad[i] );
         helper( cad, i, arr, ans, t - cad[i] );
+        arr.pop_back();
+        helper( cad, i+1, arr, ans, t );
         
     }
     vector<vector<int>> combinationSum(vector<int>& cad, int t ) {
