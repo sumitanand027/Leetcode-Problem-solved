@@ -46,35 +46,28 @@ public:
 //             cur = newCur;
 //         }
         
-        if( cur -> val < l )
-        {
-            if( cur -> right )
-                cur = cur -> right;
-            else 
-                return NULL;
-        }
-        if( cur -> val > h ) {
-            if( cur -> left )
-                cur = cur ->left;
-            else 
-                return NULL;
-        }
+//         if( cur -> val < l )
+//         {
+//             if( cur -> right )
+//                 cur = cur -> right;
+//             else 
+//                 return NULL;
+//         }
+//         if( cur -> val > h ) {
+//             if( cur -> left )
+//                 cur = cur ->left;
+//             else 
+//                 return NULL;
+//         }
         
         cur -> left = dfs( cur -> left , l , h );
         cur -> right = dfs( cur -> right , l , h );
         
-        if( cur -> val < l )
-        {
-            // if( cur -> right )
-            //     cur = cur -> right;
-            // else 
+        if( cur -> val < l ){
                 return cur -> right;
         }
         if( cur -> val > h ) {
-            // if( cur -> left )
-            //     cur = cur ->left;
-            // else 
-                return cur -> left;
+            return cur -> left;
         }
         
         return cur;
