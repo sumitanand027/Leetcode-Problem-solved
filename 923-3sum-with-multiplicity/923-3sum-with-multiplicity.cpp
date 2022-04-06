@@ -16,14 +16,11 @@ public:
                 if( i == j && j == k )
                     res += ( m[i] * (m[i] - 1) * (m[i] - 2) ) / 6;
                 else if( i == j && j != k ){
-                    cout << "YES" << " ";
                     res += ( m[i] * (m[i] - 1) / 2 * m[k]);
                 }
                 else if( i < j && j < k )
                     res += ( m[i] * m[j] * m[k] );
                 res = res % mod;
-                cout << m[i] << " " << m[j] << " "<< m[k] << " ";
-                cout << res << endl;
             }
         }
         return (int) res;
