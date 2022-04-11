@@ -4,7 +4,7 @@ public:
     unordered_set<int> safe;
     unordered_set<int> cycle;
     
-    bool dfs( int x , unordered_set<int> vis , vector< vector<int> > &graph )
+    bool dfs( int x , unordered_set<int> &vis , vector< vector<int> > &graph )
     {
         if( safe.find( x ) != safe.end() )
             return true;
