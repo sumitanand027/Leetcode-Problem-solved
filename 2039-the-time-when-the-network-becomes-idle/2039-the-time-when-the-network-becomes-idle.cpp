@@ -41,7 +41,6 @@ public:
         int maxVal = 0;
         for( int i = 0 ; i < n; i++ )
         {
-            cout << dist[i] << endl;
             
             maxVal = max( maxVal , dist[i] );
         }
