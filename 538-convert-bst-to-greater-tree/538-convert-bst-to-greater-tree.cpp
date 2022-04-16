@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    int dfs( TreeNode * root , int sum ) 
+    int dfs( TreeNode * root , int &sum ) 
     {
         if( root == NULL ) return sum;
         
@@ -22,7 +22,8 @@ public:
     }
     
     TreeNode* convertBST(TreeNode* root) {
-        dfs( root , 0 );
+        int sum = 0;
+        dfs( root , sum );
         return root;
     }
 
