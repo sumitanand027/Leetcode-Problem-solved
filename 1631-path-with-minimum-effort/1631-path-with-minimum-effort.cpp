@@ -14,7 +14,7 @@ public:
         while( !pq.empty() )
         {
             int effort = pq.top()[0];
-            int x = pq.top()[1] / 100 , y = pq.top()[1] % 100;
+            int x = pq.top()[1] / n , y = pq.top()[1] % n;
             pq.pop();
             
             if (x == m - 1 && y == n - 1) return effort;
@@ -28,7 +28,7 @@ public:
                 int nx = x + dist[i] , ny = y + dist[i+1];
                 if( nx < 0 || nx >= m || ny < 0 || ny >= n ) continue;
                 int n_effort = max( effort , abs( h[nx][ny] - h[x][y] ) );
-                pq.push( {n_effort , nx * 100 + ny} );
+                pq.push( {n_effort , nx * n + ny} );
             }
         }
         
