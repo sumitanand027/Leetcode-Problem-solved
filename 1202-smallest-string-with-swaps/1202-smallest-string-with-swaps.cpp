@@ -54,10 +54,6 @@ public:
             m[ d.find( i ) ].push_back( { s[i] , i } );
         }
         
-        for( int i = 0 ; i < s.size()  ; i++ ) {
-            cout << d.parent[i] << " ";
-        }
-        
         for( auto &x : m ) {
             sort( x.second.begin() , x.second.end() );
             vector<int> ind;
