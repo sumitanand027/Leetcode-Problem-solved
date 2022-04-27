@@ -3,7 +3,6 @@ class dsu {
     vector<int> parent;
     vector<int> rank;
     
-
     dsu( int n ) {
         parent.resize( n );
         rank.resize( n );
