@@ -11,6 +11,7 @@ public:
         
         pq.push( {0,0} );
         
+        
         while( !pq.empty() )
         {
             int effort = pq.top()[0];
@@ -31,7 +32,6 @@ public:
                 pq.push( {n_effort , nx * n + ny} );
             }
         }
-        
         
         return -1;       
     }
