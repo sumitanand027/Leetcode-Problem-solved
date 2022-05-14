@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     int networkDelayTime(vector<vector<int>>& edges, int n, int k) {
         
         vector<int> dist( n + 1 , INT_MAX );
@@ -24,5 +25,6 @@ public:
         
         if( ans == INT_MAX ) return -1;
         return ans;
-    } 
+    }
+    
 };
