@@ -1,9 +1,10 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int n = nums.size();
         int k;
-        for( k = n - 2 ; k >= 0 ; k-- ) {
+        int n = nums.size();
+        
+        for( k = n - 2; k >= 0 ; k-- ) {
             if( nums[k] < nums[k+1] ) {
                 break;
             }
@@ -13,8 +14,8 @@ public:
             reverse( nums.begin() , nums.end() );
         } else {
             int l;
-            for( l = n - 1; l > k ; l-- ) {
-                if( nums[l] > nums[k] ) {
+            for( l = n - 1; l > k; l-- ) {
+                if( nums[k] < nums[l] ) {
                     break;
                 }
             }
