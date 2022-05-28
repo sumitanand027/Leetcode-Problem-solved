@@ -12,8 +12,6 @@ public:
             if( matrix[0][j] == 0 )
                 presentInY = 1;
         
-        cout << presentInX << " " << presentInY << endl;
-        
         for( int i = 1 ; i < matrix.size() ; i++ )
         {
             for( int j = 1 ; j < matrix[0].size() ; j++ )
