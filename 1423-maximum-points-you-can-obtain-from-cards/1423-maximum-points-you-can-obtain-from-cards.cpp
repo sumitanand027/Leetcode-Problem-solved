@@ -19,13 +19,11 @@ public:
         }
         
         ans = max( ans , totSum -sum );
-        cout << ans << endl;
         int l = 0;
         for( int r = p ; r < n ; r++ )
         {
             sum -= cardPoints[l++];
             sum += cardPoints[r];
-            cout << totSum - sum << endl;
             ans = max( ans , totSum -sum );
         }
         return ans;
