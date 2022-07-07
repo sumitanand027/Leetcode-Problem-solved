@@ -2,7 +2,12 @@ class Solution {
 public:
 
     bool isValidNeighbor(int x, int y, vector<vector<int>>& board) {
-        return (x >= 0 && x < board.size() && y >= 0 && y < board[0].size());
+        if( x >= board.size() || x < 0 || y >= board[0].size() || y < 0 )
+            return 0;
+        
+        if( board[x][y] == 1 || board[x][y] == 2 )
+            return 1;
+        return 0;
     }
     
     void gameOfLife(vector<vector<int>>& board) {
@@ -13,27 +18,36 @@ public:
         for (int row = 0; row < board.size(); row++) {
             for (int col = 0; col < board[0].size(); col++) {
                 
-                int count_live_neighbors = 0;
-
-                for (int i = 0; i < 8; i++) {
-                    int curr_x = row + ways_x[i], curr_y = col + ways_y[i];
-                    if (isValidNeighbor(curr_x, curr_y, board) && abs(board[curr_x][curr_y]) == 1)
-                        count_live_neighbors++;
+                
+                int cnt = 0;
+                
+                for( int i = 0 ; i < 8 ; i++ )
+                {
+                    int x = row + ways_x[i];
+                    int y = col + ways_y[i];
+                    
+                    if( isValidNeighbor( x , y , board ) ) {
+                        cnt++;
+                    }
                 }
                 
-
-                if (board[row][col] == 1 && (count_live_neighbors < 2 || count_live_neighbors > 3))
-                    board[row][col] = -1;
-
-                if (board[row][col] == 0 && count_live_neighbors == 3)
-                    board[row][col] = 2;
+                if( board[row][col] == 1 ) {
+                    if( cnt <= 1 || cnt >= 4 )
+                        board[row][col] = 2;  
+                    // else
+                    //     board[row][col] = 2;
+                } else {
+                    if( cnt == 3 ) {
+                        board[row][col] = -2;
+                    }
+                } 
             }
         }
         
 
         for (int row = 0; row < board.size(); row++) {
             for (int col = 0; col < board[0].size(); col++) {
-                if (board[row][col] >= 1)
+                if (board[row][col] == 1 || board[row][col] == -2)
                     board[row][col] = 1;
                 else
                     board[row][col] = 0;
