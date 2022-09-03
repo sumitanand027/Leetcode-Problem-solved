@@ -1,6 +1,9 @@
 class Solution {
 public:
-    int findMin(vector<int>& nums) {
+    
+    int findMin(vector<int>& nums)
+    {
+        
         int lo = 0 , hi = nums.size() - 1;
         
         
@@ -20,4 +23,5 @@ public:
         
         return nums[lo];
     }
+    
 };
