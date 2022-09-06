@@ -9,7 +9,11 @@ public:
             for (int j = 0; j < n; ++j) {
                 if (A[j] > mid) {
                     flow = 0;
-                } else if (++flow >= k) {
+                } else {
+                    flow++;
+                }
+                
+                if(flow >= k) {
                     bouq++;
                     flow = 0;
                 }
