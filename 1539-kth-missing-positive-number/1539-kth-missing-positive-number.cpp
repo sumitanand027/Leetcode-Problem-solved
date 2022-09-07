@@ -4,7 +4,7 @@ public:
         int l = 0, r = A.size(), m;
         while (l < r) {
             m = (l + r) / 2;
-            if (A[m] - 1 - m < k)
+            if (A[m] -m - 1 < k)
                 l = m + 1;
             else
                 r = m;
